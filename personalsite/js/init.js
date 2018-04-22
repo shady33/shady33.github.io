@@ -10,18 +10,18 @@
 /*  pictures gallery
 ------------------------------------------------------*/
 
-    var dir = "images/portfolio";
+    var dir = "images/portfolio/";
     var fileextension = ".jpg";
     $.ajax({
         //This will retrieve the contents of the folder if the folder is configured as 'browsable'
-        url: dir,
+        url: 'https://' + window.location.host + '/personalsite/' + dir,
         success: function (data) {
             //List all .jpg file names in the page
             var string = "";
             var modal = "";
             var i = 1;
             $(data).find("a:contains(" + fileextension + ")").each(function () {
-                var filename = this.href.replace(window.location.host, "").replace("http://", "").replace("/personalsite","");
+                var filename = this.href.replace(window.location.host, "").replace("https://", "").replace("/personalsite","");
                 string += '<div class="columns portfolio-item"> <div class="item-wrap"><a href="#modal-' + i + '" title=""><img src="' + dir + filename + '"/></a></div></div>';
                 modal += '<div id="modal-' + i + '" class="popup-modal mfp-hide"><img class="scale-with-grid" src="'+ dir + filename + '"/></div>';
                 i = i + 1;
