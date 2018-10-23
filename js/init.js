@@ -10,33 +10,33 @@
 /*  pictures gallery
 ------------------------------------------------------*/
 
-    var dir = "images/portfolio";
-    var fileextension = ".jpg";
-    $.ajax({
-        //This will retrieve the contents of the folder if the folder is configured as 'browsable'
-        url: dir,
-        success: function (data) {
-            //List all .jpg file names in the page
-            var string = "";
-            var modal = "";
-            var i = 1;
-            $(data).find("a:contains(" + fileextension + ")").each(function () {
-                var filename = this.href.replace(window.location.host, "").replace("http://", "").replace("/personalsite","");
-                string += '<div class="columns portfolio-item"> <div class="item-wrap"><a href="#modal-' + i + '" title=""><img src="' + dir + filename + '"/></a></div></div>';
-                modal += '<div id="modal-' + i + '" class="popup-modal mfp-hide"><img class="scale-with-grid" src="'+ dir + filename + '"/></div>';
-                i = i + 1;
-            });
-            $("#portfolio-wrapper").html(string);
-            $('#modal').replaceWith(modal);
-            $('.item-wrap a').magnificPopup({
-               type:'inline',
-               fixedContentPos: false,
-               removalDelay: 200,
-               showCloseBtn: false,
-               mainClass: 'mfp-fade'
-            });
-        }
-    });
+    // var dir = "images/portfolio/";
+    // var fileextension = ".jpg";
+    // $.ajax({
+    //     //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+    //     url: 'https://' + window.location.host + '/personalsite/' + dir,
+    //     success: function (data) {
+    //         //List all .jpg file names in the page
+    //         var string = "";
+    //         var modal = "";
+    //         var i = 1;
+    //         $(data).find("a:contains(" + fileextension + ")").each(function () {
+    //             var filename = this.href.replace(window.location.host, "").replace("https://", "").replace("/personalsite","");
+    //             string += '<div class="columns portfolio-item"> <div class="item-wrap"><a href="#modal-' + i + '" title=""><img src="' + dir + filename + '"/></a></div></div>';
+    //             modal += '<div id="modal-' + i + '" class="popup-modal mfp-hide"><img class="scale-with-grid" src="'+ dir + filename + '"/></div>';
+    //             i = i + 1;
+    //         });
+    //         $("#portfolio-wrapper").html(string);
+    //         $('#modal').replaceWith(modal);
+    //         $('.item-wrap a').magnificPopup({
+    //            type:'inline',
+    //            fixedContentPos: false,
+    //            removalDelay: 200,
+    //            showCloseBtn: false,
+    //            mainClass: 'mfp-fade'
+    //         });
+    //     }
+    // });
 
 /*----------------------------------------------------*/
 /* FitText Settings
@@ -58,7 +58,7 @@
 	    $target = $(target);
 
 	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top
+	        'scrollTop': ($target.offset().top - 100)
 	    }, 800, 'swing', function () {
 	        window.location.hash = target;
 	    });
@@ -134,15 +134,15 @@
 /*	Modal Popup
 ------------------------------------------------------*/
 
-    // $('.item-wrap a').magnificPopup({
+    $('.item-wrap a').magnificPopup({
 
-    //    type:'inline',
-    //    fixedContentPos: false,
-    //    removalDelay: 200,
-    //    showCloseBtn: false,
-    //    mainClass: 'mfp-fade'
+       type:'inline',
+       fixedContentPos: false,
+       removalDelay: 200,
+       showCloseBtn: false,
+       mainClass: 'mfp-fade'
 
-    // });
+    });
 
     $(document).on('click', '.popup-modal-dismiss', function (e) {
     		e.preventDefault();
